@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title> Programming </title>
+    <script type="text/javascript">
+
+        // Assignment 1: Function and Array
+
+
+        function max(...numbers){
+            var numbersList = numbers ;
+            var maxNumber = numbersList[0];
+            for ( var i in numbersList){
+                if ( numbersList[i] > maxNumber){
+                    maxNumber = numbersList[i];
+                };
+            };
+            alert(maxNumber);
+        };
+        max(1, 2, 4, 5); // 5
+        max(5, 2, 7, 1, 6); // 7
+    
+
+
+
+
+
+
+        // Assignment 2: Object
+
+
+        //// the first way (JSON) :
+
+        function calculate(args){
+            let result;
+            if (args.op ==="+"){
+                result = args.n1+args.n2
+            }else if (args.op ==="-"){
+                result = args.n1-args.n2
+            }else{
+                result = "Not supported";
+            }
+            return result
+            };
+        
+
+        var obj={
+                n1:1,
+                n2:1,
+                op:"+"
+                };
+
+        var ans = calculate(obj);
+        alert(ans);
+        
+
+
+
+        //// the second way  :
+
+        function calculate(args){
+            let result;
+            if (args.op ==="+"){
+                result = args.n1+args.n2
+            }else if (args.op ==="-"){
+                result = args.n1-args.n2
+            }else{
+                result = "Not supported";
+            }
+            return result
+            };
+ 
+        function calculateObj (n1,n2,op){
+            this.n1=n1;
+            this.n2=n2;
+            this.op=op;
+            }
+                           
+        var obj=new calculateObj(2,1,"+");
+        var ans=calculate(obj);
+        alert(ans);
+      
+       
+        
+
+            
+
+
+    
+        // Assignment 3: Function, Array, and Object 
+
+
+        function avg(data){
+        // 物件轉字串，取 price's value
+        var priceValue=[];
+        for (var i=0; i<Number(data.size); i++){
+            priceValue.push(JSON.stringify(data.product[i]['price']))
+        };
+        
+        // 字串轉數字，算總和
+        var sum=0;
+        for (var j in priceValue){
+           sum+=parseInt(priceValue[j]);
+        };
+        var avgPrice = (sum) / (data.size);
+        alert(avgPrice);
+        };
+    
+    
+        avg({
+            size:3,
+            product:[{
+                name:"Product 1",
+                price:100
+                },{
+                name:"Product 2",
+                price:700
+                },{
+                name:"Product 3",
+                price:250
+                }]
+            })
+        
+        
+        
+    </script>
+
+
+</head>
+<body>
+    
+</body>
+</html>

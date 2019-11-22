@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title> Get Sum </title>
+    
+   
+</head>
+<body>
+    <h1> 請輸入正整數 </h1>
+    
+    <!--【Form - 第一種】 // action:導入的網頁  // 此方法會跳轉頁面
+        <form method="GET" action="/getData">   
+        <input type="text" name="number"/>
+        <input type="submit" value="submit">            
+    </form> -->
+    
+
+
+
+
+
+
+
+    <!--【第二種】-->
+    <div>  
+        <input type="text" name=number id="number"/>
+        <button  onclick="submit()">submit</button>            
+    </div>
+        
+    <h3 id="answer" > >> </div> 
+    
+    <script>
+       
+        function submit(){
+            var numberElement= document.getElementById("number");
+            var number=numberElement.value; // 注意取值方式和位置在函式內
+            let scr= "​http://localhost:3000/getData?number="+number
+            fetch(scr).then(function(response){// [object Response]               
+                    return response.json();
+                }).then(function(result){      
+                    alert(result)             
+                    answer.innerHTML=">>"+result                  
+                })
+            }
+    
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+    
+    <!-- 【第三種】
+    <div>  
+        <input type="text" name="number"/>
+       
+        <button id="submit">submit</button>            
+    </div>
+    
+    <h3 id="answer" > >> </div> 
+
+    
+    <script>
+        /// 簡易型
+    $(document).ready(function(){
+        $("#submit").click(function(){
+            $.get("/getData",{ number : $("input[name=number]").val()},function(result){
+                answer.innerHTML=">>"+result;
+                });
+            });
+        });    
+            
+            /// 完整型: 有出錯的函式，可改用以下
+        // $(document).ready(function(){      
+        //     $("#submit").click(function(){ 
+        //         var number = { number : $("input[name=number]").val()}; 
+        //             $.ajax({
+        //                 data: number,   // Json 格式
+        //                 url: "/getData", // 對接口
+        //                 dataType: "json",
+        //                 type: "get", 
+        //                 cache: false, // 緩存
+        //                 timeout: 1000, 
+        //                 async:true,   // 不同步
+        //                 success: function(response){
+        //                     answer.innerHTML=">>"+response;}
+        //                     })
+        //                 })
+        //             })
+    </script> 
+     -->
+    
+</body>
+
+</html>

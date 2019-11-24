@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title> Get Sum </title>
+    
+   
+</head>
+<body>
+    <h1> 請輸入正整數 </h1>
+    
+    <!-- 【Form - 第一種】 // action:導入的網頁  // 此方法會跳轉頁面
+    <form method="GET" action="/getData">   
+        <input type="text" name="number"/>
+        <input type="submit" value="submit">            
+    </form> -->
+
+
+
+
+
+
+
+    <!--【第二種】-->
+    <div>  
+        <input type="text" name=number id="number"/>
+        <button  onclick="submit()">submit</button>            
+    </div>
+        
+    <h3 id="answer" > >>: </div> 
+    
+    <script>
+       
+
+        // async function submit(){
+        //     var numberElement= document.getElementById("number");
+        //     var number=numberElement.value; // 注意取值方式和位置在函式內
+        //     let scr="/getData?number="+number;
+        //     // let scr=`http://localhost:3000/getData?number=${number}`
+        //     // let scr="http://localhost:3000/getData?number=10"
+        //     try{
+        //         let response= await fetch(scr);
+        //         let result= await response.json() 
+        //         let sum=result[0]; // result=[{}]
+        //         answer.innerHTML=">>: "+sum.sum // sum.sum 取值
+                
+        //     }catch(e){
+        //         console.log("Oops, error", e);
+        //     }                 
+        // }
+
+
+
+
+
+
+        function submit(){
+            var numberElement= document.getElementById("number");
+            var number=numberElement.value; // 注意取值方式和位置在函式內
+            let scr="/getData?number="+number;
+            // let scr=`http://localhost:3000/getData?number=${number}`
+            fetch(scr).then(function(response){               
+                    return response.json();
+                }).then(function(result){      // result=[{}]
+                    let sum=result[0];
+                    answer.innerHTML=">>: "+sum.sum       // sum.sum 取值          
+                })
+            }
+    
+    </script>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Callback Function and Advanced HTML DOM </title>
+    <script type="text/javascript">
+
+        function ajax(src, callback){
+            let req = new XMLHttpRequest(); // 1. 建立一個 XMLHttpRequest 物件
+            req.open("GET", src); // 2. 開啟一個 URL 
+            req.onload=function(){ // 4. 等待一段時間後，觸發 load 事件，取得資料
+
+                // callback(this.responseText);  // 回傳字串型式，this.responseText 物件成員
+                let resStr=this.responseText;
+                let resJson=JSON.parse(resStr); // 轉成 JSON 型式
+                callback(resJson);   //5.呼叫 callback，即透過參數傳入的 render 函式
+                 
+                };
+            req.send(); // 3. 發送一個請求，進行非同步處理
+            };
+
+
+        function render(data){ // 6.可以從 result 取得回傳的資料
+            console.log(data);
+            for(let i=0;i<data.length;i++){
+                var para = document.createElement("P"); // Create a <p> element
+                product=data[i];
+                para.innerHTML=product.name.bold()+" $ "+product.price+ " : "+product.description+"<hr/>"; // Insert text
+                document.body.appendChild(para); 
+            }
+        }
+
+        // https://www.w3schools.com/jsref/met_document_createelement.asp
+
+
+
+        ajax("https://cwpeng.github.io/live-records-samples/data/products.json", function(response){
+            render(response);
+        }); 
+    
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

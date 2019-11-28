@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title> IELTS Notes </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link href="Css_2.css" rel="stylesheet" type="text/css" media="all" />
+    
+   
+  </head>
+  <body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+    
+      class Page extends React.Component {
+
+        changeStr=()=>{
+          var changeWord=document.getElementById("word");
+          changeWord.innerHTML="Have a Good Time!";
+          }
+
+        toggleMore=()=>{
+          var boxMore=document.getElementById("boxMore");
+          boxMore.classList.toggle("hide");
+          }
+
+        render() {
+          return (
+            <div>
+
+            <input type="checkbox" name="menu_control" id="menu_control" />
+            
+            <div className="header">
+              
+              <h1 className="logo">
+                <a href="#"><img src="logo.png" /></a></h1>
+              
+                <label htmlFor="menu_control" className="menu_btn">
+                  <span>選單</span>
+                </label>
+              
+              <nav>  
+                <a href="#"><strong> 單字表 </strong></a>
+                <a href="#"><strong> 練習區 </strong></a>
+                <a href="#"><strong> 資源區 </strong></a>
+                <a href="#"><strong> 關於我 </strong></a>
+              </nav>
+
+            </div>
+
+
+
+            <div className="title"  >
+              <h1 onClick={this.changeStr} id="word">Jennie's notes</h1>
+            </div>
+
+
+            <div>
+              <h2 style={{textAlign : 'center'}}> 4 Goals </h2> 
+            </div>
+
+
+
+            <main>
+
+              <div className="box"> 
+                <strong>Listening</strong> 
+                <img src="listen.png" /> 
+                <ul>
+                  <li>題型解析</li>
+                  <li>解題技巧</li>
+                </ul>  
+              </div>
+
+              <div className="box"> 
+                <strong>Reading</strong>
+                <img src="reading.png" />
+                <ul>
+                  <li>題型解析</li>
+                  <li>解題技巧</li>
+                </ul>
+              </div>
+
+              <div className="box"> 
+                <strong>Speaking</strong>
+                <img src="speaking.png" />
+                <ul>
+                  <li>題型解析</li>
+                  <li>解題技巧</li>
+                </ul>  
+              </div>
+
+              <div className="box"> 
+                <strong>Writing</strong>
+                <img src="writing.png" />
+                <ul>
+                  <li>題型解析</li>
+                  <li>解題技巧</li>
+                </ul>  
+              </div>
+            </main>
+
+
+            <div className="btn_div"> 
+              <button id="btn"  onClick={this.toggleMore}> More </button> 
+            </div> 
+            
+            
+            <main id="boxMore" className="hide">
+
+              <div className="box"> 
+                <strong>Listening</strong> 
+                <img src="listen.png" /> 
+                  <ul>
+                    <li>題型解析</li>
+                    <li>解題技巧</li>
+                  </ul>  
+              </div>
+
+              <div className="box"> 
+                <strong>Reading</strong>
+                <img src="reading.png" />
+                  <ul>
+                    <li>題型解析</li>
+                    <li>解題技巧</li>
+                  </ul>
+              </div>
+
+              <div className="box"> 
+                <strong>Speaking</strong>
+                <img src="speaking.png" />
+                  <ul>
+                    <li>題型解析</li>
+                    <li>解題技巧</li>
+                  </ul>  
+              </div>
+
+              <div className="box"> 
+                <strong>Writing</strong>
+                <img src="writing.png" />
+                  <ul>
+                    <li>題型解析</li>
+                    <li>解題技巧</li>
+                  </ul>  
+              </div>
+            </main>         
+            
+            </div>
+                
+            );
+          };
+        };
+  
+
+    ReactDOM.render(
+      <Page />,
+      document.getElementById('root')
+      )
+    </script>
+   
+  </body>
+</html>

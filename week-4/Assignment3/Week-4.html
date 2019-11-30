@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title> IELTS Notes </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link href="Css_2.css" rel="stylesheet" type="text/css" media="all" />
+    
+   
+  </head>
+  <body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+    
+      class Page extends React.Component {
+
+        constructor(){
+          super();
+          this.state={
+            msg:"Jennie's notes",
+            
+            showBox:false
+          }
+        }
+
+        // 修改內值，不要用 this.state.XXX = 值，使用 this.setState({})
+        // setState，只會更新對應的狀態，不會覆蓋其他 state 狀態
+        // 注意! 用 this.setState 是不同步，如要取得更改後的值需要用 callback: this.setState({},callback)
+        changeStr=()=>{
+          this.setState({
+            msg:"Have a Good Time!"
+          })
+        }
+
+        showBox=()=>{
+          this.setState({
+            showBox:!this.state.showBox // True,False切換，注意各個值相對應關係 # 127
+          })
+        }
+
+        render() {
+          
+          return (
+            <div>
+
+            <input type="checkbox" name="menu_control" id="menu_control" />
+            
+            <div className="header">
+              
+              <h1 className="logo">
+                <a href="#"><img src="logo.png" /></a></h1>
+              
+                <label htmlFor="menu_control" className="menu_btn">
+                  <span>選單</span>
+                </label>
+              
+              <nav>  
+                <a href="#"><strong> 單字表 </strong></a>
+                <a href="#"><strong> 練習區 </strong></a>
+                <a href="#"><strong> 資源區 </strong></a>
+                <a href="#"><strong> 關於我 </strong></a>
+              </nav>
+
+            </div>
+
+            <div className="title"  >
+              <h1 onClick={this.changeStr}>{this.state.msg}</h1>
+            </div>
+
+
+            <div className="title2">
+              <h2> 4 Goals </h2> 
+            </div>
+
+
+
+            <main>
+
+              <div className="box"> 
+                <strong>Listening</strong> 
+                <img src="listen.png" /> 
+                <ul>
+                  <li>題型解析</li>
+                  <li>解題技巧</li>
+                </ul>  
+              </div>
+
+              <div className="box"> 
+                <strong>Reading</strong>
+                <img src="reading.png" />
+                <ul>
+                  <li>題型解析</li>
+                  <li>解題技巧</li>
+                </ul>
+              </div>
+
+              <div className="box"> 
+                <strong>Speaking</strong>
+                <img src="speaking.png" />
+                <ul>
+                  <li>題型解析</li>
+                  <li>解題技巧</li>
+                </ul>  
+              </div>
+
+              <div className="box"> 
+                <strong>Writing</strong>
+                <img src="writing.png" />
+                <ul>
+                  <li>題型解析</li>
+                  <li>解題技巧</li>
+                </ul>  
+              </div>
+            </main>
+
+
+            <div className="btn_div"> 
+              <button onClick={this.showBox} > More </button> 
+            </div> 
+            
+            
+            <main className={this.state.showBox? "show":"hide"}>
+
+              <div className="box"> 
+                <strong>Listening</strong> 
+                <img src="listen.png" /> 
+                  <ul>
+                    <li>題型解析</li>
+                    <li>解題技巧</li>
+                  </ul>  
+              </div>
+
+              <div className="box"> 
+                <strong>Reading</strong>
+                <img src="reading.png" />
+                  <ul>
+                    <li>題型解析</li>
+                    <li>解題技巧</li>
+                  </ul>
+              </div>
+
+              <div className="box"> 
+                <strong>Speaking</strong>
+                <img src="speaking.png" />
+                  <ul>
+                    <li>題型解析</li>
+                    <li>解題技巧</li>
+                  </ul>  
+              </div>
+
+              <div className="box"> 
+                <strong>Writing</strong>
+                <img src="writing.png" />
+                  <ul>
+                    <li>題型解析</li>
+                    <li>解題技巧</li>
+                  </ul>  
+              </div>
+            </main>         
+            
+            </div>
+                
+            );
+          };
+        };
+  
+
+    ReactDOM.render(
+      <Page />,
+      document.getElementById('root')
+      )
+    </script>
+   
+  </body>
+</html>
